@@ -46,35 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Braile-addUC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Braile-addUC.Designer.cs">
-      <DependentUpon>Braile-addUC.cs</DependentUpon>
-    </Compile>
     <Compile Include="cirUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cirUC.Designer.cs">
       <DependentUpon>cirUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="letters.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="letters.Designer.cs">
       <DependentUpon>letters.cs</DependentUpon>
-    </Compile>
-    <Compile Include="lettershow.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="lettershow.Designer.cs">
-      <DependentUpon>lettershow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,20 +78,11 @@
     <Compile Include="triUC.Designer.cs">
       <DependentUpon>triUC.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Braile-addUC.resx">
-      <DependentUpon>Braile-addUC.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="cirUC.resx">
       <DependentUpon>cirUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="letters.resx">
       <DependentUpon>letters.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="lettershow.resx">
-      <DependentUpon>lettershow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

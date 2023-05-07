@@ -31,14 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(triUC));
             this.panel11 = new System.Windows.Forms.Panel();
+            this.Back = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbPERI = new System.Windows.Forms.Label();
             this.ans = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.BrailleLabel = new System.Windows.Forms.TextBox();
             this.rec = new System.Windows.Forms.Panel();
+            this.tritext3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tritext1 = new System.Windows.Forms.TextBox();
             this.tritext2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -47,16 +52,16 @@
             this.tributton = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.Back = new System.Windows.Forms.Button();
-            this.tritext3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel11.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.rec.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel11
@@ -69,6 +74,20 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1449, 875);
             this.panel11.TabIndex = 0;
+            // 
+            // Back
+            // 
+            this.Back.BackColor = System.Drawing.Color.MediumPurple;
+            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Back.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back.Location = new System.Drawing.Point(14, 12);
+            this.Back.Name = "Back";
+            this.Back.Padding = new System.Windows.Forms.Padding(3);
+            this.Back.Size = new System.Drawing.Size(113, 42);
+            this.Back.TabIndex = 29;
+            this.Back.Text = "Back";
+            this.Back.UseVisualStyleBackColor = false;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // panel3
             // 
@@ -84,6 +103,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.gbPERI);
             this.panel2.Controls.Add(this.ans);
@@ -95,12 +115,26 @@
             this.panel2.Size = new System.Drawing.Size(1368, 372);
             this.panel2.TabIndex = 22;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumPurple;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1228, 305);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(3);
+            this.button1.Size = new System.Drawing.Size(113, 42);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // gbPERI
             // 
             this.gbPERI.AutoSize = true;
             this.gbPERI.BackColor = System.Drawing.Color.White;
             this.gbPERI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPERI.Location = new System.Drawing.Point(428, 58);
+            this.gbPERI.Location = new System.Drawing.Point(428, 46);
             this.gbPERI.Name = "gbPERI";
             this.gbPERI.Padding = new System.Windows.Forms.Padding(3);
             this.gbPERI.Size = new System.Drawing.Size(253, 29);
@@ -111,7 +145,7 @@
             // 
             this.ans.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ans.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ans.Location = new System.Drawing.Point(687, 50);
+            this.ans.Location = new System.Drawing.Point(687, 39);
             this.ans.Multiline = true;
             this.ans.Name = "ans";
             this.ans.Size = new System.Drawing.Size(100, 40);
@@ -123,7 +157,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(793, 61);
+            this.label15.Location = new System.Drawing.Point(793, 49);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(3);
             this.label15.Size = new System.Drawing.Size(42, 29);
@@ -136,7 +170,7 @@
             this.label18.BackColor = System.Drawing.SystemColors.Control;
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(503, 178);
+            this.label18.Location = new System.Drawing.Point(331, 267);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(3);
             this.label18.Size = new System.Drawing.Size(267, 34);
@@ -145,13 +179,15 @@
             // 
             // BrailleLabel
             // 
+            this.BrailleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BrailleLabel.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BrailleLabel.Location = new System.Drawing.Point(442, 235);
+            this.BrailleLabel.Location = new System.Drawing.Point(671, 230);
             this.BrailleLabel.Multiline = true;
             this.BrailleLabel.Name = "BrailleLabel";
-            this.BrailleLabel.Size = new System.Drawing.Size(398, 84);
+            this.BrailleLabel.Size = new System.Drawing.Size(398, 100);
             this.BrailleLabel.TabIndex = 14;
             this.BrailleLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BrailleLabel.TextChanged += new System.EventHandler(this.BrailleLabel_TextChanged);
             // 
             // rec
             // 
@@ -172,6 +208,39 @@
             this.rec.Name = "rec";
             this.rec.Size = new System.Drawing.Size(769, 387);
             this.rec.TabIndex = 26;
+            // 
+            // tritext3
+            // 
+            this.tritext3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tritext3.Location = new System.Drawing.Point(329, 238);
+            this.tritext3.Name = "tritext3";
+            this.tritext3.Size = new System.Drawing.Size(244, 30);
+            this.tritext3.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(579, 237);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(3);
+            this.label1.Size = new System.Drawing.Size(50, 33);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "cm";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.MediumPurple;
+            this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(125, 236);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(3);
+            this.label2.Size = new System.Drawing.Size(116, 33);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Length 2";
             // 
             // tritext1
             // 
@@ -264,72 +333,58 @@
             this.label21.TabIndex = 5;
             this.label21.Text = "Length 2";
             // 
-            // Back
-            // 
-            this.Back.BackColor = System.Drawing.Color.MediumPurple;
-            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Back.Location = new System.Drawing.Point(14, 12);
-            this.Back.Name = "Back";
-            this.Back.Padding = new System.Windows.Forms.Padding(3);
-            this.Back.Size = new System.Drawing.Size(113, 42);
-            this.Back.TabIndex = 29;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = false;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
-            // 
-            // tritext3
-            // 
-            this.tritext3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tritext3.Location = new System.Drawing.Point(329, 238);
-            this.tritext3.Name = "tritext3";
-            this.tritext3.Size = new System.Drawing.Size(244, 30);
-            this.tritext3.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(579, 237);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(50, 33);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "cm";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.MediumPurple;
-            this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(125, 236);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(3);
-            this.label2.Size = new System.Drawing.Size(116, 33);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Length 2";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // button1
+            // panel1
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumPurple;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1228, 305);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(3);
-            this.button1.Size = new System.Drawing.Size(113, 42);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(-5, 106);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1378, 84);
+            this.panel1.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(707, 23);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(3);
+            this.label3.Size = new System.Drawing.Size(34, 39);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "5";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(753, 23);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(3);
+            this.label4.Size = new System.Drawing.Size(227, 39);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "ml as 1ml per a dot";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(411, 23);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(3);
+            this.label5.Size = new System.Drawing.Size(306, 39);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "ink amount for the text is  ";
             // 
             // triUC
             // 
@@ -344,6 +399,8 @@
             this.panel2.PerformLayout();
             this.rec.ResumeLayout(false);
             this.rec.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +430,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

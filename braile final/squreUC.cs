@@ -69,5 +69,10 @@ namespace braile_final
                 MessageBox.Show("Error: Please Enter Length", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

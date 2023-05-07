@@ -27,7 +27,7 @@ namespace braile_final
         }
         private void Back_Click(object sender, EventArgs e)
         {
-            
+            Application.Restart();
         }
 
         private void recbutton_Click(object sender, EventArgs e)
@@ -84,6 +84,7 @@ namespace braile_final
                 panel3.Visible = false;
                 MessageBox.Show("Error: Please Enter Length", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,6 +94,11 @@ namespace braile_final
             tritext3.Clear();
 
             panel3.Hide();
+        }
+
+        private void BrailleLabel_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

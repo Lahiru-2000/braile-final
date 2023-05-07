@@ -93,7 +93,7 @@ namespace braile_final
 
                 string brailleWord = ConvertWordToBraille(userInput);
 
-               
+                label4.Text = Convert.ToString(dotCount);
 
 
                 BrailleLabel.Text = brailleWord;
@@ -186,34 +186,49 @@ namespace braile_final
         {
             switch (letter)
             {
-                case 'a': return "⠁";
-                case 'b': return "⠃";
-                case 'c': return "⠉";
-                case 'd': return "⠙";
-                case 'e': return "⠑";
-                case 'f': return "⠋";
-                case 'g': return "⠛";
-                case 'h': return "⠓";
-                case 'i': return "⠊";
-                case 'j': return "⠚";
-                case 'k': return "⠅";
-                case 'l': return "⠇";
-                case 'm': return "⠍";
-                case 'n': return "⠝";
-                case 'o': return "⠕";
-                case 'p': return "⠏";
-                case 'q': return "⠟";
-                case 'r': return "⠗";
-                case 's': return "⠎";
-                case 't': return "⠞";
-                case 'u': return "⠥";
-                case 'v': return "⠧";
-                case 'w': return "⠺";
-                case 'x': return "⠭";
-                case 'y': return "⠽";
-                case 'z': return "⠵";
+                case 'a': return "⠁ ";
+                case 'b': return "⠃ ";
+                case 'c': return "⠉ ";
+                case 'd': return "⠙ ";
+                case 'e': return "⠑ ";
+                case 'f': return "⠋ ";
+                case 'g': return "⠛ ";
+                case 'h': return "⠓ ";
+                case 'i': return "⠊ ";
+                case 'j': return "⠚ ";
+                case 'k': return "⠅ ";
+                case 'l': return "⠇ ";
+                case 'm': return "⠍ ";
+                case 'n': return "⠝ ";
+                case 'o': return "⠕ ";
+                case 'p': return "⠏ ";
+                case 'q': return "⠟ ";
+                case 'r': return "⠗ ";
+                case 's': return "⠎ ";
+                case 't': return "⠞ ";
+                case 'u': return "⠥ ";
+                case 'v': return "⠧ ";
+                case 'w': return "⠺ ";
+                case 'x': return "⠭ ";
+                case 'y': return "⠽ ";
+                case 'z': return "⠵ ";
                 default: return "";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

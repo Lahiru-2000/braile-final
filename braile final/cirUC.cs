@@ -79,5 +79,17 @@ namespace braile_final
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cirtext.Clear();
+            panel3.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           // Application.Exit();
+            Application.Restart();
+        }
     }
 }
