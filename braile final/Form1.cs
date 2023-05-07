@@ -4,9 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace braile_final
@@ -45,14 +49,17 @@ namespace braile_final
 
         private void box1Button_Click(object sender, EventArgs e)
         {
-            if (box1Button != null && comboBox1.SelectedIndex == 0)
+            string userInput = inputTextBox.Text;
+
+
+            if (countButton != null && comboBox1.SelectedIndex == 0)
             {
                 //cirtext1
                 //cirbox
 
                 cir.Visible = true;
                 groupBox3.Hide();
-               
+                Braile_addUC.Hide();
 
 
                 tri.Visible = false;
@@ -62,7 +69,7 @@ namespace braile_final
 
 
             }
-            else if (box1Button != null && comboBox1.SelectedIndex == 1)
+            else if (countButton != null && comboBox1.SelectedIndex == 1)
             {
                 //tri
                 //tribox1, tribox2, tribox3
@@ -71,6 +78,7 @@ namespace braile_final
 
                 tri.Visible = true;
                 groupBox3.Hide();
+                Braile_addUC.Hide();
 
                 squ.Visible = false;
                 rec.Visible = false;
@@ -78,7 +86,8 @@ namespace braile_final
 
 
             }
-            else if (box1Button != null && comboBox1.SelectedIndex == 2)
+            
+            else if (countButton != null && comboBox1.SelectedIndex == 2)
             {
                 //sqbutton , squtext
                 //squre
@@ -86,6 +95,7 @@ namespace braile_final
 
                 squ.Visible = true;
                 groupBox3.Hide();
+                Braile_addUC.Hide();
 
                 rec.Visible = false;
                 cir.Visible = false;
@@ -93,7 +103,7 @@ namespace braile_final
 
 
             }
-            else if (box1Button != null && comboBox1.SelectedIndex == 3)
+            else if (countButton != null && comboBox1.SelectedIndex == 3)
             {
                 //rectext1 , rectext2 , recbotton , recta
 
@@ -101,6 +111,7 @@ namespace braile_final
 
                 rec.Visible = true;
                 groupBox3.Hide();
+                Braile_addUC.Hide();
 
                 cir.Visible = false;
                 tri.Visible = false;
@@ -108,320 +119,131 @@ namespace braile_final
 
             }
 
-            else if ((letterbox.Text == "a" || letterbox.Text == "A") && box1Button != null)
+
+
+            
+            else if (Regex.IsMatch(userInput, @"^[a-zA-Z\s]+$"))
             {
-                groupBox3.Show();
-                letterbox.Clear();
+                int dotCount = CountBrailleDots(userInput);
 
-                ans.Text = Convert.ToString("1");
+                dotCountLabel.Text = "The word ' " + userInput + " ' contains ' " + dotCount + " ' Braille dots.";
 
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
+                string brailleWord = ConvertWordToBraille(userInput);
+
+               
+                BrailleLabel.Text = brailleWord;
+ 
             }
-            else if ((letterbox.Text == "B" || letterbox.Text == "b") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("2");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }   
-            else if ((letterbox.Text == "c" || letterbox.Text == "C") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("3");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
+            
+                //dotCountLabel.Text = "Error: Please enter only English letters and spaces.";
+                else
+                {
+                
+                MessageBox.Show("Error: Please Select a Shape or Enter Text", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if ((letterbox.Text == "d" || letterbox.Text == "D") && box1Button  != null)
+
+        }
+
+        private string ConvertWordToBraille(string word)
+        {
+            string brailleWord = "";
+            foreach (char letter in word.ToLower())
             {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("4");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
+                brailleWord += ConvertToBraille(letter);
             }
-            else if ((letterbox.Text == "e" || letterbox.Text == "E") && box1Button != null)
+            return brailleWord;
+            
+        }
+
+        private string ConvertToBraille(char letter)
+        {
+            switch (letter)
             {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("5");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
+                case 'a': return "⠁";
+                case 'b': return "⠃";
+                case 'c': return "⠉";
+                case 'd': return "⠙";
+                case 'e': return "⠑";
+                case 'f': return "⠋";
+                case 'g': return "⠛";
+                case 'h': return "⠓";
+                case 'i': return "⠊";
+                case 'j': return "⠚";
+                case 'k': return "⠅";
+                case 'l': return "⠇";
+                case 'm': return "⠍";
+                case 'n': return "⠝";
+                case 'o': return "⠕";
+                case 'p': return "⠏";
+                case 'q': return "⠟";
+                case 'r': return "⠗";
+                case 's': return "⠎";
+                case 't': return "⠞";
+                case 'u': return "⠥";
+                case 'v': return "⠧";
+                case 'w': return "⠺";
+                case 'x': return "⠭";
+                case 'y': return "⠽";
+                case 'z': return "⠵";
+                default: return "";
             }
-            else if ((letterbox.Text == "f" || letterbox.Text == "F") && box1Button != null)
+        }
+
+        private int CountBrailleDots(string input)
+        {
+            int dotCount = 0;
+
+            foreach (char c in input)
             {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("6");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
+                switch (c)
+                {
+                    case ' ':
+                        dotCount += 0;
+                        break;
+                    case 'a':
+                        dotCount += 1;
+                        break;
+                    case 'b':
+                    case 'c':
+                    case 'e':
+                    case 'i':
+                    case 'k':
+                        dotCount += 2;
+                        break;
+                    case 'd':
+                    case 'f':
+                    case 'h':
+                    case 'j':
+                    case 'l':
+                    case 'm':
+                    case 'o':
+                    case 's':
+                    case 'u':
+                        dotCount += 3;
+                        break;
+                    case 'g':
+                    case 'n':
+                    case 'p':
+                    case 'r':
+                    case 't':
+                    case 'v':
+                    case 'w':
+                    case 'x':
+                    case 'z':
+                        dotCount += 4;
+                        break;
+                    case 'q':
+                    case 'y':
+                        dotCount += 5;
+                        break;
+                    default:
+                        break;
+                }
             }
-            else if ((letterbox.Text == "g" || letterbox.Text == "G") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
 
-                ans.Text = Convert.ToString("7");
+            return dotCount;
 
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "h" || letterbox.Text == "H") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
 
-                ans.Text = Convert.ToString("8");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-
-            }
-            else if ((letterbox.Text == "i" || letterbox.Text == "I") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("9");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "j" || letterbox.Text == "J") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("10");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "k" || letterbox.Text == "K") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("11");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "l" || letterbox.Text == "L") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("12");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "m" || letterbox.Text == "M") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("13");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-
-            }
-            else if ((letterbox.Text == "n" || letterbox.Text == "N") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("14");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "o" || letterbox.Text == "O") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("15");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "p" || letterbox.Text == "P") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("16");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "q" || letterbox.Text == "Q") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("17");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "r" || letterbox.Text == "R") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("18");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "s" || letterbox.Text == "S") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("19");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "t" || letterbox.Text == "T") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("20");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "u" || letterbox.Text == "U") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("21");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "v" || letterbox.Text == "V") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("22");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "w" || letterbox.Text == "W") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("23");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "x" || letterbox.Text == "X") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("24");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
-            else if ((letterbox.Text == "y" || letterbox.Text == "Y") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("25");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }   
-            else if ((letterbox.Text == "z" || letterbox.Text == "Z") && box1Button != null)
-            {
-                groupBox3.Show();
-                letterbox.Clear();
-
-                ans.Text = Convert.ToString("26");
-
-                rec.Visible = false;
-                cir.Visible = false;
-                tri.Visible = false;
-                squ.Visible = false;
-            }
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -432,46 +254,61 @@ namespace braile_final
         private void cirbutton_Click(object sender, EventArgs e)
         {
             //cir , cirbutton , cirtext
-
-            comboBox1.Text = null;
-
-            if (cirbutton != null && cirtext != null)
+            try
             {
-                groupBox3.Visible = true;
-            }
 
-            int a = Convert.ToInt32(cirtext.Text);
-            gbPERI.Text = Convert.ToString("Perimeter of the Circle is ");
+                if (cirbutton != null && cirtext != null)
+                {
+                    
 
-            int c, b;
+                    int a = Convert.ToInt32(cirtext.Text);
+                    gbPERI.Text = Convert.ToString("Perimeter of the Circle is ");
 
-            c = 2 * 3;
-            b = c * a;
+                    int c, b;
 
-            ans.Text = Convert.ToString(b);
-            
+                    c = 2 * 3;
+                    b = c * a;
 
-            // Input number
+                    ans.Text = Convert.ToString(b);
 
-            int num = Convert.ToInt32(ans.Text);
 
-            // Braille conversion
-            string[] braille = {
+                    // Input number
+
+                    int num = Convert.ToInt32(ans.Text);
+
+                    // Braille conversion
+                    string[] braille = {
                  "⠚", "⠁", "⠃", "⠉", "⠙",  // 0-4
              "⠑", "⠋", "⠛", "⠓", "⠊"   // 5-9
             };
 
-            string brailleNum = "";
-            foreach (char digit in num.ToString())
+                    string brailleNum = "";
+                    foreach (char digit in num.ToString())
+                    {
+                        int index = int.Parse(digit.ToString());
+                        brailleNum += braille[index];
+                    }
+
+                    // Output braille number
+                    brailtext.Text = Convert.ToString(brailleNum);
+                    groupBox3.Visible = true;
+                    comboBox1.Text = null;
+                }
+            }
+            catch(Exception )
             {
-                int index = int.Parse(digit.ToString());
-                brailleNum += braille[index];
+                groupBox3.Visible = false;
+                MessageBox.Show("Error: Please Enter Radius", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+
             }
 
-            // Output braille number
-            brailtext.Text = Convert.ToString(brailleNum);
 
-        }
+            
+
+
+
+            }
 
 
         private void label12_Click(object sender, EventArgs e)
@@ -492,43 +329,58 @@ namespace braile_final
         private void tributton_Click(object sender, EventArgs e)
         {
             //tri , tributton ,tritext1, tritext2, tritext3
-
-            if (tributton != null && tritext1.Text != null && tritext2.Text != null && tritext3 != null)
+            try
             {
-                comboBox1.Text = null;
+                if (tributton != null && tritext1.Text != null && tritext2.Text != null && tritext3.Text != null)
+                {
+                    
 
-                groupBox3.Visible = true;
+
+                    int a = Convert.ToInt32(tritext1.Text);
+                    int b = Convert.ToInt32(tritext2.Text);
+                    int d = Convert.ToInt32(tritext3.Text);
+                    int c;
 
 
-                int a = Convert.ToInt32(tritext1.Text);
-                int b = Convert.ToInt32(tritext2.Text);
-                int d = Convert.ToInt32(tritext3.Text);
-                int c;
+                    c = b + a + d;
 
-                c = b + a + d;
+                    ans.Text = Convert.ToString(c);
+                    gbPERI.Text = Convert.ToString("Perimeter of the Triangle is ");
 
-                ans.Text = Convert.ToString(c);
-                gbPERI.Text = Convert.ToString("Perimeter of the Triangle is ");
+                    // Input number
 
-                // Input number
+                    float num = Convert.ToInt32(ans.Text);
 
-                float num = Convert.ToInt32(ans.Text);
-
-                // Braille conversion
-                string[] braille = {
+                    // Braille conversion
+                    string[] braille = {
                  "⠚", "⠁", "⠃", "⠉", "⠙",  // 0-4
              "⠑", "⠋", "⠛", "⠓", "⠊"   // 5-9
             };
 
-                string brailleNum = "";
-                foreach (char digit in num.ToString())
-                {
-                    int index = int.Parse(digit.ToString());
-                    brailleNum += braille[index];
-                }
+                    string brailleNum = "";
+                    foreach (char digit in num.ToString())
+                    {
+                        int index = int.Parse(digit.ToString());
+                        brailleNum += braille[index];
+                    }
 
-                // Output braille number
-                brailtext.Text = Convert.ToString(brailleNum);
+                    // Output braille number
+                    brailtext.Text = Convert.ToString(brailleNum);
+
+
+
+
+                    comboBox1.Text = null;
+
+                    groupBox3.Visible = true;
+                }
+            }
+            catch(Exception )
+           
+            
+            {
+                groupBox3.Visible=false;
+                MessageBox.Show("Error: Please Enter Length", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -540,86 +392,155 @@ namespace braile_final
         private void sqbutton_Click(object sender, EventArgs e)
         {
             //squ, sqbutton, sqtext1
-
-            if (sqbutton != null && sqtext1.Text != null)
+            try
             {
-                comboBox1.Text = null;
+                if (sqbutton != null && sqtext1.Text != null)
+                {
 
-                groupBox3.Visible = true;
 
 
-                int a = Convert.ToInt32(sqtext1.Text);
+                    int a = Convert.ToInt32(sqtext1.Text);
 
-                int c;
+                    int c;
 
-                c = 4 * a;
+                    c = 4 * a;
 
-                ans.Text = Convert.ToString(c);
-                gbPERI.Text = Convert.ToString("Perimeter of the Squre is ");
+                    ans.Text = Convert.ToString(c);
+                    gbPERI.Text = Convert.ToString("Perimeter of the Squre is ");
 
-                // Input number
+                    // Input number
 
-                float num = Convert.ToInt32(ans.Text);
+                    float num = Convert.ToInt32(ans.Text);
 
-                // Braille conversion
-                string[] braille = {
+                    // Braille conversion
+                    string[] braille = {
                  "⠚", "⠁", "⠃", "⠉", "⠙",  // 0-4
              "⠑", "⠋", "⠛", "⠓", "⠊"   // 5-9
             };
 
-                string brailleNum = "";
-                foreach (char digit in num.ToString())
-                {
-                    int index = int.Parse(digit.ToString());
-                    brailleNum += braille[index];
-                }
+                    string brailleNum = "";
+                    foreach (char digit in num.ToString())
+                    {
+                        int index = int.Parse(digit.ToString());
+                        brailleNum += braille[index];
+                    }
 
-                // Output braille number
-                brailtext.Text = Convert.ToString(brailleNum);
+                    // Output braille number
+                    brailtext.Text = Convert.ToString(brailleNum);
+                    comboBox1.Text = null;
+
+                    groupBox3.Visible = true;
+                }
             }
+            catch (Exception )
+
+
+            {
+                groupBox3.Visible = false;
+                MessageBox.Show("Error: Please Enter Length", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void recbutton_Click(object sender, EventArgs e)
         {
             //rec, rectext1, rectext2, recbutton
-
-            if (recbutton != null && rectext1.Text != null && rectext2.Text != null)
+            try
             {
-                comboBox1.Text = null;
+                if (recbutton != null && rectext1.Text != null && rectext2.Text != null)
+                {
+                    comboBox1.Text = null;
 
-                groupBox3.Visible = true;
+                    groupBox3.Visible = true;
 
 
-                int a = Convert.ToInt32(rectext1.Text);
-                int b = Convert.ToInt32(rectext2.Text);
-                int c, d;
+                    int a = Convert.ToInt32(rectext1.Text);
+                    int b = Convert.ToInt32(rectext2.Text);
+                    int c, d;
 
-                c = (b + a);
-                d = 2 * c;
+                    c = (b + a);
+                    d = 2 * c;
 
-                ans.Text = Convert.ToString(d);
-                gbPERI.Text = Convert.ToString("Perimeter of the Rectangle is ");
+                    ans.Text = Convert.ToString(d);
+                    gbPERI.Text = Convert.ToString("Perimeter of the Rectangle is ");
 
-                // Input number
+                    // Input number
 
-                float num = Convert.ToInt32(ans.Text);
+                    float num = Convert.ToInt32(ans.Text);
 
-                // Braille conversion
-                string[] braille = {
+                    // Braille conversion
+                    string[] braille = {
                  "⠚", "⠁", "⠃", "⠉", "⠙",  // 0-4
              "⠑", "⠋", "⠛", "⠓", "⠊"   // 5-9
             };
 
-                string brailleNum = "";
-                foreach (char digit in num.ToString())
-                {
-                    int index = int.Parse(digit.ToString());
-                    brailleNum += braille[index];
-                }
+                    string brailleNum = "";
+                    foreach (char digit in num.ToString())
+                    {
+                        int index = int.Parse(digit.ToString());
+                        brailleNum += braille[index];
+                    }
 
-                // Output braille number
-                brailtext.Text = Convert.ToString(brailleNum);
+                    // Output braille number
+                    brailtext.Text = Convert.ToString(brailleNum);
+                }
+            }
+            
+            catch(Exception )
+           
+            
+            {
+                groupBox3.Visible = false;
+                MessageBox.Show("Error: Please Enter Length", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void gbPERI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearLetter_Click(object sender, EventArgs e)
+        {
+            cirtext.Text = null;
+            Braile_addUC.Visible=false;
+            comboBox1.Text = null;
+            inputTextBox.Text = null;
+            rectext1.Text = null;
+            rectext2.Text = null;
+            tritext1.Text = null;
+            tritext2.Text = null;
+            tritext3.Text = null;
+            sqtext1.Text = null;
+        }
+
+        private void shapebutton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void shapebutton1_Click(object sender, EventArgs e)
+        {
+            cirtext.Text = null;
+            Braile_addUC.Visible = false;
+            comboBox1.Text = null;
+            inputTextBox.Text = null;
+            rectext1.Text = null;
+            rectext2.Text = null;
+            tritext1.Text = null;
+            tritext2.Text = null;
+            tritext3.Text = null;
+            sqtext1.Text = null;
+            groupBox3.Visible = false;
+
+            squ.Visible = false;
+
+            rec.Visible = false;
+            cir.Visible = false;
+            tri.Visible = false;
+
+
+        }
     }
+    
 }

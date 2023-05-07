@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.brailtext = new System.Windows.Forms.TextBox();
-            this.ans = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.letterbox = new System.Windows.Forms.TextBox();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.box1Button = new System.Windows.Forms.Button();
+            this.countButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.cir = new System.Windows.Forms.GroupBox();
@@ -77,10 +74,17 @@
             this.recbutton = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
+            this.ans = new System.Windows.Forms.TextBox();
+            this.brailtext = new System.Windows.Forms.TextBox();
             this.gbPERI = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.groupBox3.SuspendLayout();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Braile_addUC = new System.Windows.Forms.Panel();
+            this.ClearLetter = new System.Windows.Forms.Button();
+            this.shapebutton1 = new System.Windows.Forms.Button();
+            this.dotCountLabel = new System.Windows.Forms.Label();
+            this.BrailleLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.cir.SuspendLayout();
@@ -91,54 +95,19 @@
             this.panel4.SuspendLayout();
             this.rec.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.Braile_addUC.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.gbPERI);
-            this.groupBox3.Controls.Add(this.brailtext);
-            this.groupBox3.Controls.Add(this.ans);
-            this.groupBox3.Location = new System.Drawing.Point(693, 49);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(625, 731);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Visible = false;
-            // 
-            // brailtext
-            // 
-            this.brailtext.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brailtext.Location = new System.Drawing.Point(203, 417);
-            this.brailtext.Multiline = true;
-            this.brailtext.Name = "brailtext";
-            this.brailtext.Size = new System.Drawing.Size(237, 84);
-            this.brailtext.TabIndex = 1;
-            this.brailtext.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ans
-            // 
-            this.ans.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ans.Location = new System.Drawing.Point(377, 83);
-            this.ans.Multiline = true;
-            this.ans.Name = "ans";
-            this.ans.Size = new System.Drawing.Size(100, 40);
-            this.ans.TabIndex = 0;
-            this.ans.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.letterbox);
+            this.groupBox1.Controls.Add(this.inputTextBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.box1Button);
+            this.groupBox1.Controls.Add(this.countButton);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(107, 49);
             this.groupBox1.Name = "groupBox1";
@@ -161,24 +130,25 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(168, 29);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.Text = "Select a Shape";
             // 
-            // letterbox
+            // inputTextBox
             // 
-            this.letterbox.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.letterbox.Location = new System.Drawing.Point(270, 223);
-            this.letterbox.Multiline = true;
-            this.letterbox.Name = "letterbox";
-            this.letterbox.Size = new System.Drawing.Size(102, 35);
-            this.letterbox.TabIndex = 4;
-            this.letterbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.letterbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.inputTextBox.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputTextBox.Location = new System.Drawing.Point(215, 223);
+            this.inputTextBox.Multiline = true;
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(205, 35);
+            this.inputTextBox.TabIndex = 4;
+            this.inputTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 223);
+            this.label2.Location = new System.Drawing.Point(33, 223);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(3);
             this.label2.Size = new System.Drawing.Size(154, 29);
@@ -197,19 +167,19 @@
             this.label1.Text = "OR";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // box1Button
+            // countButton
             // 
-            this.box1Button.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.box1Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.box1Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.box1Button.Location = new System.Drawing.Point(179, 293);
-            this.box1Button.Name = "box1Button";
-            this.box1Button.Padding = new System.Windows.Forms.Padding(3);
-            this.box1Button.Size = new System.Drawing.Size(83, 36);
-            this.box1Button.TabIndex = 1;
-            this.box1Button.Text = "Enter";
-            this.box1Button.UseVisualStyleBackColor = false;
-            this.box1Button.Click += new System.EventHandler(this.box1Button_Click);
+            this.countButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.countButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.countButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countButton.Location = new System.Drawing.Point(179, 293);
+            this.countButton.Name = "countButton";
+            this.countButton.Padding = new System.Windows.Forms.Padding(3);
+            this.countButton.Size = new System.Drawing.Size(83, 36);
+            this.countButton.TabIndex = 1;
+            this.countButton.Text = "Enter";
+            this.countButton.UseVisualStyleBackColor = false;
+            this.countButton.Click += new System.EventHandler(this.box1Button_Click);
             // 
             // panel1
             // 
@@ -673,6 +643,26 @@
             this.label23.TabIndex = 2;
             this.label23.Text = "Enter Length";
             // 
+            // ans
+            // 
+            this.ans.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ans.Location = new System.Drawing.Point(377, 83);
+            this.ans.Multiline = true;
+            this.ans.Name = "ans";
+            this.ans.Size = new System.Drawing.Size(100, 40);
+            this.ans.TabIndex = 0;
+            this.ans.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // brailtext
+            // 
+            this.brailtext.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brailtext.Location = new System.Drawing.Point(197, 325);
+            this.brailtext.Multiline = true;
+            this.brailtext.Name = "brailtext";
+            this.brailtext.Size = new System.Drawing.Size(237, 84);
+            this.brailtext.TabIndex = 1;
+            this.brailtext.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // gbPERI
             // 
             this.gbPERI.AutoSize = true;
@@ -684,6 +674,7 @@
             this.gbPERI.Size = new System.Drawing.Size(272, 29);
             this.gbPERI.TabIndex = 4;
             this.gbPERI.Text = "Perimeter of the Rectangle is";
+            this.gbPERI.Click += new System.EventHandler(this.gbPERI_Click);
             // 
             // label15
             // 
@@ -702,12 +693,92 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.SystemColors.Control;
             this.label18.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(195, 334);
+            this.label18.Location = new System.Drawing.Point(189, 250);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(3);
             this.label18.Size = new System.Drawing.Size(265, 32);
             this.label18.TabIndex = 11;
             this.label18.Text = "Perimeter Value in Braile";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.shapebutton1);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.gbPERI);
+            this.groupBox3.Controls.Add(this.brailtext);
+            this.groupBox3.Controls.Add(this.ans);
+            this.groupBox3.Location = new System.Drawing.Point(693, 49);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(625, 731);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
+            // 
+            // Braile_addUC
+            // 
+            this.Braile_addUC.Controls.Add(this.BrailleLabel);
+            this.Braile_addUC.Controls.Add(this.ClearLetter);
+            this.Braile_addUC.Controls.Add(this.dotCountLabel);
+            this.Braile_addUC.Location = new System.Drawing.Point(693, 49);
+            this.Braile_addUC.Name = "Braile_addUC";
+            this.Braile_addUC.Size = new System.Drawing.Size(625, 731);
+            this.Braile_addUC.TabIndex = 13;
+            this.Braile_addUC.Visible = false;
+            // 
+            // ClearLetter
+            // 
+            this.ClearLetter.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClearLetter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ClearLetter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearLetter.Location = new System.Drawing.Point(249, 644);
+            this.ClearLetter.Name = "ClearLetter";
+            this.ClearLetter.Padding = new System.Windows.Forms.Padding(3);
+            this.ClearLetter.Size = new System.Drawing.Size(139, 36);
+            this.ClearLetter.TabIndex = 22;
+            this.ClearLetter.Text = "Clear All";
+            this.ClearLetter.UseVisualStyleBackColor = false;
+            this.ClearLetter.Click += new System.EventHandler(this.ClearLetter_Click);
+            // 
+            // shapebutton1
+            // 
+            this.shapebutton1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.shapebutton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.shapebutton1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shapebutton1.Location = new System.Drawing.Point(235, 642);
+            this.shapebutton1.Name = "shapebutton1";
+            this.shapebutton1.Padding = new System.Windows.Forms.Padding(3);
+            this.shapebutton1.Size = new System.Drawing.Size(139, 36);
+            this.shapebutton1.TabIndex = 23;
+            this.shapebutton1.Text = "Clear All";
+            this.shapebutton1.UseVisualStyleBackColor = false;
+            this.shapebutton1.Click += new System.EventHandler(this.shapebutton1_Click);
+            // 
+            // dotCountLabel
+            // 
+            this.dotCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dotCountLabel.AutoSize = true;
+            this.dotCountLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dotCountLabel.Location = new System.Drawing.Point(65, 57);
+            this.dotCountLabel.MaximumSize = new System.Drawing.Size(500, 200);
+            this.dotCountLabel.Name = "dotCountLabel";
+            this.dotCountLabel.Size = new System.Drawing.Size(482, 24);
+            this.dotCountLabel.TabIndex = 21;
+            this.dotCountLabel.Text = " \"Tput + \"\' contains \" + dotCount + \" Braille dots.\"";
+            this.dotCountLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // BrailleLabel
+            // 
+            this.BrailleLabel.AutoSize = true;
+            this.BrailleLabel.Location = new System.Drawing.Point(152, 223);
+            this.BrailleLabel.Name = "BrailleLabel";
+            this.BrailleLabel.Size = new System.Drawing.Size(59, 16);
+            this.BrailleLabel.TabIndex = 23;
+            this.BrailleLabel.Text = "Braille fg";
             // 
             // Form1
             // 
@@ -715,18 +786,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1431, 828);
+            this.Controls.Add(this.Braile_addUC);
             this.Controls.Add(this.rec);
             this.Controls.Add(this.squ);
             this.Controls.Add(this.tri);
             this.Controls.Add(this.cir);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -747,19 +819,22 @@
             this.rec.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.Braile_addUC.ResumeLayout(false);
+            this.Braile_addUC.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button box1Button;
+        private System.Windows.Forms.Button countButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox cir;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox letterbox;
+        private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
@@ -797,12 +872,18 @@
         private System.Windows.Forms.Button recbutton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox cirtext;
         private System.Windows.Forms.TextBox ans;
         private System.Windows.Forms.TextBox brailtext;
-        private System.Windows.Forms.TextBox cirtext;
         private System.Windows.Forms.Label gbPERI;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel Braile_addUC;
+        private System.Windows.Forms.Button ClearLetter;
+        private System.Windows.Forms.Button shapebutton1;
+        private System.Windows.Forms.Label dotCountLabel;
+        private System.Windows.Forms.Label BrailleLabel;
     }
 }
 
